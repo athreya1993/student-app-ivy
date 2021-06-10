@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <section class="col-sm-12 main-section ">
+            <div class="jumbotron">
+                <h1 class="display-4">Student Management System</h1>
+            </div>
+        </section>
+    </div>
+    <div class="row" *ngIf="showContainer">
+        <div class="card col-sm-3" *ngFor="let student of studentList">
+            <div class="card-body">
+                <h5 class="card-title">{{ student.name }}</h5>
+                <p class="card-text">{{student.phone }}</p>
+                <button type="button" class="btn btn-primary" data-toggle='modal' data-target='#editUserModal'
+                    (click)="modalOpen(student)">Update Details</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body" *ngIf="showUpdateModal">
+        <form ngNativeValidate (ngSubmit)="updateBtnHandler()">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="personName" [(ngModel)]="formData.name" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Phone</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="phone" [(ngModel)]="formData.phone" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email" [(ngModel)]="formData.email" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Parent/Gaurdian Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="appFName" [(ngModel)]="formData.appFName" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="address" [(ngModel)]="formData.address" required>
+                </div>
+            </div>
+            <div class="alert alert-success" *ngIf="isUpdated">
+                Updated successfully!
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-outline-secondary" [routerLink]="['']">Close</button>
+            </div>
+        </form>
+    </div>
+
+</div>

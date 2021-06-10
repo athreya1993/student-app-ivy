@@ -1,0 +1,15 @@
+<div class="alert alert-danger" *ngIf="isDeleted">
+    Student Data Deleted successfully
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card col-sm-3" *ngFor="let student of studentList;let j=index">
+            <div class="card-body" *ngIf="showComplete">
+                <h5 class="card-title">{{ student.name }}</h5>
+                <p class="card-text">{{student.phone }}</p>
+                <button type="button" class="btn btn-primary" data-toggle='modal' data-target='#editUserModal'
+                    (click)="deleteStudent(j,student)">Delete Student</button>
+            </div>
+        </div>
+    </div>
+</div>

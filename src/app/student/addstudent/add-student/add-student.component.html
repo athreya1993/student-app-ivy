@@ -1,0 +1,70 @@
+<div class="container" class="jumbotron">
+    <div>
+      <div class="col-md-12">
+        <h1>New Registration Form</h1>
+      </div>
+      <form class="col-md-6 offset-md-3" [formGroup]="customerForm" (ngSubmit)="addStudent()">
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" 
+            placeholder="Enter Name" formControlName="name"
+            [ngClass]="{ 'is-invalid': customerForm.get('name').touched && customerForm.get('name').invalid }" />
+            <div class="invalid-feedback">
+              <div>Name is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Parent/Gaurdian Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Enter Parent/Gaurdian Name" 
+            formControlName="appFName" 
+            [ngClass]="{ 'is-invalid': customerForm.get('appFName').touched && customerForm.get('appFName').invalid }" />
+            <div class="invalid-feedback">
+              <div>Parent Name is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Phone</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Enter Phone" 
+            formControlName="phone" 
+            [ngClass]="{ 'is-invalid': customerForm.get('phone').touched && customerForm.get('phone').invalid }" />
+            <div class="invalid-feedback">
+              <div>Phone is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-5 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Enter Phone" 
+              formControlName="email"  />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-5 col-form-label">Address</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Enter Address" 
+              formControlName="address"  />
+            </div>
+          </div>
+  
+        <div class="alert alert-success" *ngIf="isSaved">
+          Saved Successfully
+        </div>
+        <div class="alert alert-danger" *ngIf="isError">
+          Error while saving the data
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <!-- todo: disable the button if the form is invalid -->
+            <button type="submit" class="btn btn-primary" [disabled]="!(customerForm.valid)">Submit</button>
+            <div><span class="badge badge-danger" *ngIf="customerForm.invalid">Please enter all the fields</span></div>       
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
