@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DeleteStudentComponent } from './delete-student.component';
 
 describe('DeleteStudentComponent', () => {
@@ -8,6 +8,9 @@ describe('DeleteStudentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[
+        HttpClientTestingModule
+      ],
       declarations: [ DeleteStudentComponent ]
     })
     .compileComponents();
